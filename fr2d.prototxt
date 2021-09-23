@@ -1,0 +1,2141 @@
+op {
+  input: "gpu_0/data"
+  input: "gpu_0/conv1_w"
+  output: "gpu_0/conv1"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 7
+    ints: 7
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 2
+    ints: 2
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 3
+    ints: 3
+    ints: 0
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/conv1"
+  input: "gpu_0/conv1_spatbn_relu_s"
+  input: "gpu_0/conv1_spatbn_relu_b"
+  input: "gpu_0/conv1_spatbn_relu_rm"
+  input: "gpu_0/conv1_spatbn_relu_riv"
+  output: "gpu_0/conv1_spatbn_relu"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/conv1_spatbn_relu"
+  output: "gpu_0/conv1_spatbn_relu"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/conv1_spatbn_relu"
+  input: "gpu_0/comp_0_conv_1_w"
+  output: "gpu_0/comp_0_conv_1"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_0_conv_1"
+  input: "gpu_0/comp_0_spatbn_1_s"
+  input: "gpu_0/comp_0_spatbn_1_b"
+  input: "gpu_0/comp_0_spatbn_1_rm"
+  input: "gpu_0/comp_0_spatbn_1_riv"
+  output: "gpu_0/comp_0_spatbn_1"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_0_spatbn_1"
+  output: "gpu_0/comp_0_spatbn_1"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_0_spatbn_1"
+  input: "gpu_0/comp_0_conv_2_w"
+  output: "gpu_0/comp_0_conv_2"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_0_conv_2"
+  input: "gpu_0/comp_0_spatbn_2_s"
+  input: "gpu_0/comp_0_spatbn_2_b"
+  input: "gpu_0/comp_0_spatbn_2_rm"
+  input: "gpu_0/comp_0_spatbn_2_riv"
+  output: "gpu_0/comp_0_spatbn_2"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/conv1_spatbn_relu"
+  input: "gpu_0/comp_0_spatbn_2"
+  output: "gpu_0/comp_0_sum_2"
+  name: ""
+  type: "Sum"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_0_sum_2"
+  output: "gpu_0/comp_0_sum_2"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_0_sum_2"
+  input: "gpu_0/comp_1_conv_1_w"
+  output: "gpu_0/comp_1_conv_1"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_1_conv_1"
+  input: "gpu_0/comp_1_spatbn_1_s"
+  input: "gpu_0/comp_1_spatbn_1_b"
+  input: "gpu_0/comp_1_spatbn_1_rm"
+  input: "gpu_0/comp_1_spatbn_1_riv"
+  output: "gpu_0/comp_1_spatbn_1"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_1_spatbn_1"
+  output: "gpu_0/comp_1_spatbn_1"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_1_spatbn_1"
+  input: "gpu_0/comp_1_conv_2_w"
+  output: "gpu_0/comp_1_conv_2"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_1_conv_2"
+  input: "gpu_0/comp_1_spatbn_2_s"
+  input: "gpu_0/comp_1_spatbn_2_b"
+  input: "gpu_0/comp_1_spatbn_2_rm"
+  input: "gpu_0/comp_1_spatbn_2_riv"
+  output: "gpu_0/comp_1_spatbn_2"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_0_sum_2"
+  input: "gpu_0/comp_1_spatbn_2"
+  output: "gpu_0/comp_1_sum_2"
+  name: ""
+  type: "Sum"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_1_sum_2"
+  output: "gpu_0/comp_1_sum_2"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_1_sum_2"
+  input: "gpu_0/comp_2_conv_1_w"
+  output: "gpu_0/comp_2_conv_1"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 2
+    ints: 2
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_2_conv_1"
+  input: "gpu_0/comp_2_spatbn_1_s"
+  input: "gpu_0/comp_2_spatbn_1_b"
+  input: "gpu_0/comp_2_spatbn_1_rm"
+  input: "gpu_0/comp_2_spatbn_1_riv"
+  output: "gpu_0/comp_2_spatbn_1"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_2_spatbn_1"
+  output: "gpu_0/comp_2_spatbn_1"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_2_spatbn_1"
+  input: "gpu_0/comp_2_conv_2_w"
+  output: "gpu_0/comp_2_conv_2"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_2_conv_2"
+  input: "gpu_0/comp_2_spatbn_2_s"
+  input: "gpu_0/comp_2_spatbn_2_b"
+  input: "gpu_0/comp_2_spatbn_2_rm"
+  input: "gpu_0/comp_2_spatbn_2_riv"
+  output: "gpu_0/comp_2_spatbn_2"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_1_sum_2"
+  input: "gpu_0/shortcut_projection_2_w"
+  output: "gpu_0/shortcut_projection_2"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 2
+    ints: 2
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/shortcut_projection_2"
+  input: "gpu_0/shortcut_projection_2_spatbn_s"
+  input: "gpu_0/shortcut_projection_2_spatbn_b"
+  input: "gpu_0/shortcut_projection_2_spatbn_rm"
+  input: "gpu_0/shortcut_projection_2_spatbn_riv"
+  output: "gpu_0/shortcut_projection_2_spatbn"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/shortcut_projection_2_spatbn"
+  input: "gpu_0/comp_2_spatbn_2"
+  output: "gpu_0/comp_2_sum_2"
+  name: ""
+  type: "Sum"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_2_sum_2"
+  output: "gpu_0/comp_2_sum_2"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_2_sum_2"
+  input: "gpu_0/comp_3_conv_1_w"
+  output: "gpu_0/comp_3_conv_1"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_3_conv_1"
+  input: "gpu_0/comp_3_spatbn_1_s"
+  input: "gpu_0/comp_3_spatbn_1_b"
+  input: "gpu_0/comp_3_spatbn_1_rm"
+  input: "gpu_0/comp_3_spatbn_1_riv"
+  output: "gpu_0/comp_3_spatbn_1"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_3_spatbn_1"
+  output: "gpu_0/comp_3_spatbn_1"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_3_spatbn_1"
+  input: "gpu_0/comp_3_conv_2_w"
+  output: "gpu_0/comp_3_conv_2"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_3_conv_2"
+  input: "gpu_0/comp_3_spatbn_2_s"
+  input: "gpu_0/comp_3_spatbn_2_b"
+  input: "gpu_0/comp_3_spatbn_2_rm"
+  input: "gpu_0/comp_3_spatbn_2_riv"
+  output: "gpu_0/comp_3_spatbn_2"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_2_sum_2"
+  input: "gpu_0/comp_3_spatbn_2"
+  output: "gpu_0/comp_3_sum_2"
+  name: ""
+  type: "Sum"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_3_sum_2"
+  output: "gpu_0/comp_3_sum_2"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_3_sum_2"
+  input: "gpu_0/comp_4_conv_1_w"
+  output: "gpu_0/comp_4_conv_1"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 2
+    ints: 2
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_4_conv_1"
+  input: "gpu_0/comp_4_spatbn_1_s"
+  input: "gpu_0/comp_4_spatbn_1_b"
+  input: "gpu_0/comp_4_spatbn_1_rm"
+  input: "gpu_0/comp_4_spatbn_1_riv"
+  output: "gpu_0/comp_4_spatbn_1"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_4_spatbn_1"
+  output: "gpu_0/comp_4_spatbn_1"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_4_spatbn_1"
+  input: "gpu_0/comp_4_conv_2_w"
+  output: "gpu_0/comp_4_conv_2"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_4_conv_2"
+  input: "gpu_0/comp_4_spatbn_2_s"
+  input: "gpu_0/comp_4_spatbn_2_b"
+  input: "gpu_0/comp_4_spatbn_2_rm"
+  input: "gpu_0/comp_4_spatbn_2_riv"
+  output: "gpu_0/comp_4_spatbn_2"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_3_sum_2"
+  input: "gpu_0/shortcut_projection_4_w"
+  output: "gpu_0/shortcut_projection_4"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 2
+    ints: 2
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/shortcut_projection_4"
+  input: "gpu_0/shortcut_projection_4_spatbn_s"
+  input: "gpu_0/shortcut_projection_4_spatbn_b"
+  input: "gpu_0/shortcut_projection_4_spatbn_rm"
+  input: "gpu_0/shortcut_projection_4_spatbn_riv"
+  output: "gpu_0/shortcut_projection_4_spatbn"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/shortcut_projection_4_spatbn"
+  input: "gpu_0/comp_4_spatbn_2"
+  output: "gpu_0/comp_4_sum_2"
+  name: ""
+  type: "Sum"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_4_sum_2"
+  output: "gpu_0/comp_4_sum_2"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_4_sum_2"
+  input: "gpu_0/comp_5_conv_1_w"
+  output: "gpu_0/comp_5_conv_1"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_5_conv_1"
+  input: "gpu_0/comp_5_spatbn_1_s"
+  input: "gpu_0/comp_5_spatbn_1_b"
+  input: "gpu_0/comp_5_spatbn_1_rm"
+  input: "gpu_0/comp_5_spatbn_1_riv"
+  output: "gpu_0/comp_5_spatbn_1"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_5_spatbn_1"
+  output: "gpu_0/comp_5_spatbn_1"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_5_spatbn_1"
+  input: "gpu_0/comp_5_conv_2_w"
+  output: "gpu_0/comp_5_conv_2"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_5_conv_2"
+  input: "gpu_0/comp_5_spatbn_2_s"
+  input: "gpu_0/comp_5_spatbn_2_b"
+  input: "gpu_0/comp_5_spatbn_2_rm"
+  input: "gpu_0/comp_5_spatbn_2_riv"
+  output: "gpu_0/comp_5_spatbn_2"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_4_sum_2"
+  input: "gpu_0/comp_5_spatbn_2"
+  output: "gpu_0/comp_5_sum_2"
+  name: ""
+  type: "Sum"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_5_sum_2"
+  output: "gpu_0/comp_5_sum_2"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_5_sum_2"
+  input: "gpu_0/comp_6_conv_1_w"
+  output: "gpu_0/comp_6_conv_1"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 2
+    ints: 2
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_6_conv_1"
+  input: "gpu_0/comp_6_spatbn_1_s"
+  input: "gpu_0/comp_6_spatbn_1_b"
+  input: "gpu_0/comp_6_spatbn_1_rm"
+  input: "gpu_0/comp_6_spatbn_1_riv"
+  output: "gpu_0/comp_6_spatbn_1"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_6_spatbn_1"
+  output: "gpu_0/comp_6_spatbn_1"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_6_spatbn_1"
+  input: "gpu_0/comp_6_conv_2_w"
+  output: "gpu_0/comp_6_conv_2"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_6_conv_2"
+  input: "gpu_0/comp_6_spatbn_2_s"
+  input: "gpu_0/comp_6_spatbn_2_b"
+  input: "gpu_0/comp_6_spatbn_2_rm"
+  input: "gpu_0/comp_6_spatbn_2_riv"
+  output: "gpu_0/comp_6_spatbn_2"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_5_sum_2"
+  input: "gpu_0/shortcut_projection_6_w"
+  output: "gpu_0/shortcut_projection_6"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 2
+    ints: 2
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/shortcut_projection_6"
+  input: "gpu_0/shortcut_projection_6_spatbn_s"
+  input: "gpu_0/shortcut_projection_6_spatbn_b"
+  input: "gpu_0/shortcut_projection_6_spatbn_rm"
+  input: "gpu_0/shortcut_projection_6_spatbn_riv"
+  output: "gpu_0/shortcut_projection_6_spatbn"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/shortcut_projection_6_spatbn"
+  input: "gpu_0/comp_6_spatbn_2"
+  output: "gpu_0/comp_6_sum_2"
+  name: ""
+  type: "Sum"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_6_sum_2"
+  output: "gpu_0/comp_6_sum_2"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_6_sum_2"
+  input: "gpu_0/comp_7_conv_1_w"
+  output: "gpu_0/comp_7_conv_1"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_7_conv_1"
+  input: "gpu_0/comp_7_spatbn_1_s"
+  input: "gpu_0/comp_7_spatbn_1_b"
+  input: "gpu_0/comp_7_spatbn_1_rm"
+  input: "gpu_0/comp_7_spatbn_1_riv"
+  output: "gpu_0/comp_7_spatbn_1"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_7_spatbn_1"
+  output: "gpu_0/comp_7_spatbn_1"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_7_spatbn_1"
+  input: "gpu_0/comp_7_conv_2_w"
+  output: "gpu_0/comp_7_conv_2"
+  name: ""
+  type: "Conv"
+  arg {
+    name: "kernels"
+    ints: 1
+    ints: 3
+    ints: 3
+  }
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "pads"
+    ints: 0
+    ints: 1
+    ints: 1
+    ints: 0
+    ints: 1
+    ints: 1
+  }
+  arg {
+    name: "exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_7_conv_2"
+  input: "gpu_0/comp_7_spatbn_2_s"
+  input: "gpu_0/comp_7_spatbn_2_b"
+  input: "gpu_0/comp_7_spatbn_2_rm"
+  input: "gpu_0/comp_7_spatbn_2_riv"
+  output: "gpu_0/comp_7_spatbn_2"
+  name: ""
+  type: "SpatialBN"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "epsilon"
+    f: 0.0010000000474974513
+  }
+  arg {
+    name: "momentum"
+    f: 0.8999999761581421
+  }
+  arg {
+    name: "is_test"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_6_sum_2"
+  input: "gpu_0/comp_7_spatbn_2"
+  output: "gpu_0/comp_7_sum_2"
+  name: ""
+  type: "Sum"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/comp_7_sum_2"
+  output: "gpu_0/comp_7_sum_2"
+  name: ""
+  type: "Relu"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/comp_7_sum_2"
+  output: "gpu_0/final_avg"
+  name: ""
+  type: "AveragePool"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  arg {
+    name: "kernels"
+    ints: 8
+    ints: 7
+    ints: 7
+  }
+  arg {
+    name: "strides"
+    ints: 1
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+  engine: "CUDNN"
+}
+op {
+  input: "gpu_0/final_avg"
+  input: "gpu_0/last_out_L400_w"
+  input: "gpu_0/last_out_L400_b"
+  output: "gpu_0/last_out_L400"
+  name: ""
+  type: "FC"
+  arg {
+    name: "order"
+    s: "NCHW"
+  }
+  arg {
+    name: "use_cudnn"
+    i: 1
+  }
+  arg {
+    name: "cudnn_exhaustive_search"
+    i: 1
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/last_out_L400"
+  input: "gpu_0/label"
+  output: "gpu_0/softmax"
+  output: "gpu_0/loss"
+  name: ""
+  type: "SoftmaxWithLoss"
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/softmax"
+  input: "gpu_0/label"
+  output: "gpu_0/accuracy"
+  name: ""
+  type: "Accuracy"
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/loss"
+  output: "gpu_0/video_model_test/Scale"
+  name: ""
+  type: "Scale"
+  arg {
+    name: "scale"
+    f: 1.0
+  }
+  device_option {
+    device_type: 0
+    device_id: 0
+  }
+}
+external_input: "gpu_0/
